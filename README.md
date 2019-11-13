@@ -1,4 +1,4 @@
-StockFinder Project
+# StockFinder Project
 
 This program allows a user to search a stock and find accurate financial information about a stock/company. 
 
