@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.IOException;
 //Made by Christian Kubelle, Cole Smith, Micheal Semeraro
-
+//stockFinder school project
 public class finalMain {
 
     public static void main(String[] args) throws IOException

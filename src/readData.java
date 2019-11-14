@@ -23,9 +23,9 @@ public class readData {
 
     private int findRowNum() throws IOException{
         numRows = 0;
-        //This method finds the number of rows in the csv file that is accessed from the API
-        //By finding the number of rows, we can create perfectly sized arrays that
-        //contain all of the data. This also allows us to create arrays of any size.
+        /*This method finds the number of rows in the csv file that is accessed from the API
+          By finding the number of rows, we can create perfectly sized arrays that
+          contain all of the data. This also allows us to create arrays of any size.*/
 
         URL url = new URL(stockSearch);
         URLConnection urlconn = url.openConnection();
@@ -38,12 +38,12 @@ public class readData {
         return numRows;
     }
 
-    //Helped by thenewboston's videos on youtube
+
 
     public String[][] convertToArray() throws IOException
     {
-        //This method converts the csv file that is accessed from the API
-        //into a String array. All the data is transferred over
+        /* This method converts the csv file that is accessed from the API
+        into a String array. All the data is transferred over*/
 
         items = new String[findRowNum()][6];
         int r = 0;
@@ -71,12 +71,12 @@ public class readData {
         return items;
     }
 
-    //help from thenewboston's videos on youtube
+
 
     public float[][] convertToFloat() throws IOException
     {
         //This method converts the String array to an array of usable float values
-        //By converting it to float values, calculations can be perfomed on the numbers
+        //By converting it to float values, calculations can be performed on the numbers
 
         dataArray = new float[findRowNum()][6];
 
@@ -98,7 +98,7 @@ public class readData {
         return dataArray;
     }
 
-    //help from thenewboston's videos on youtube
+
 
 
     public void printFloat()
@@ -123,11 +123,16 @@ public class readData {
 
     public void printString()
     {
+        //Inserts '/' so that date is more clear to user
+        for(int row = 1; row < items.length; row++)
+        {
+            items[row][0] = items[row][0].substring(0,2) + "/" + items[row][0].substring(2,4)+ "/" + items[row][0].substring(4,items[row][0].length());
+        }
 
         for (int row = 1; row < items.length; row++)
         {
-            //prints out the entirety of the array minus the first
-            //row, which is just the header
+            /*prints out the entirety of the array minus the first
+            row, which is just the header*/
 
             for (int column = 0; column < items[row].length; column++)
             {
@@ -144,7 +149,7 @@ public class readData {
         float sma = 0;
 
         // Calculate current sma based on day value
-        //Type determines if sma is calculated from high, low, close, or open
+        // Type determines if sma is calculated from high, low, close, or open
 
         for (int row = 2; row < days + 2; row++)
         {
@@ -159,15 +164,15 @@ public class readData {
 
     public float twoHundredDaySma()
     {
-        //Two hundred day sma
-        //Although we already have a sma method that allows you to find \
-        //the sma of any day, historically the 200 day sma is siginifcant
-        //and we wanted to provide the user with the information
-        //when typing in the stock information
+        /*Two hundred day sma
+          Although we already have a sma method that allows you to find
+          the sma of any day, historically the 200 day sma is significant
+          and we wanted to provide the user with the information
+          when typing in the stock information*/
 
         float sma = 0;
         // Calculate current sma based on day value
-        //Type determines if sma is calculated from high, low, close, or open
+        // Type determines if sma is calculated from high, low, close, or open
 
         for (int row = 1; row < 201; row++)
         {
@@ -183,10 +188,10 @@ public class readData {
 
     public void dayFinder(String date)
     {
-        //This method will print out all the data of a stock
-        //on a certain day that is inputted by the user. It is
-        //able to do this by searching through the array until
-        //the date entered matches a date found in the array
+        /*This method will print out all the data of a stock
+          on a certain day that is inputted by the user. It is
+          able to do this by searching through the array until
+          the date entered matches a date found in the array*/
 
         boolean found = false;
         for (int row = 1; row < items.length; row++)
@@ -209,10 +214,10 @@ public class readData {
 
     public void findHigh()
     {
-        //This method returns the all time high of the stock
-        //It is able to do this by searching through all of
-        //the closing prices of the stock and then prints out
-        //which one is the greatest
+        /*This method returns the all time high of the stock
+          It is able to do this by searching through all of
+          the closing prices of the stock and then prints out
+          which one is the greatest*/
 
         float allTimeHigh = dataArray[0][2];
         for(int i = 0; i < dataArray.length; i++){
@@ -227,9 +232,9 @@ public class readData {
 
     public void findLow()
     {
-        //This method is the same as the findHigh() method
-        //The only difference being that it prints out the
-        //lowest value found out of all the closing prices
+        /*This method is the same as the findHigh() method
+          The only difference being that it prints out the
+          lowest value found out of all the closing prices*/
 
         float allTimeLow = dataArray[1][3];
         for(int i = 1; i < dataArray.length; i++){
@@ -345,11 +350,11 @@ public class readData {
 
     public void makeHistoricalTrade(float buyDate, float sellDate){
 
-        //This method simulates a trade if the user were to buy
-        //the stock at on a certain date, and then sell it on a
-        //different date. It also uses the findRowIndex() method to
-        //determine whether or not the specified dates for buying and selling
-        //are valid
+        /*This method simulates a trade if the user were to buy
+          the stock at on a certain date, and then sell it on a
+          different date. It also uses the findRowIndex() method to
+          determine whether or not the specified dates for buying and selling
+          are valid*/
 
         float profitOrLoss = 0;
         float buyPrice = 0;
