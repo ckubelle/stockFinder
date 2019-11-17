@@ -55,7 +55,7 @@ public class readData {
 
 
         String line = null;
-        //String line = buff.readLine();
+        
 
         while ((line = buff.readLine()) != null) {
             StringTokenizer z = new StringTokenizer(line, ",");
@@ -67,7 +67,7 @@ public class readData {
             }
 
         }
-
+        
         return items;
     }
 
@@ -89,7 +89,7 @@ public class readData {
 
             for (int column = 0; column < items[row].length; column++)
             {
-                float val = new Float(items[row][column]);
+               float val = Float.parseFloat(items[row][column]);
                 dataArray[row][column] = val;
 
             }
@@ -123,6 +123,8 @@ public class readData {
 
     public void printString()
     {
+        
+
         //Inserts '/' so that date is more clear to user
         for(int row = 1; row < items.length; row++)
         {
@@ -193,6 +195,11 @@ public class readData {
           able to do this by searching through the array until
           the date entered matches a date found in the array*/
 
+
+          for(int row = 1; row < items.length; row++)
+        {
+            items[row][0] = items[row][0].replace("/", "");
+        }
         boolean found = false;
         for (int row = 1; row < items.length; row++)
         {

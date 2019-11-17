@@ -46,7 +46,7 @@ public class finalMain {
             }
 
             else if (choice.equals("2")) {
-                //x.convertToFloat();
+                //x.convertToFloat();y
                 x.findHigh();
             }
 
@@ -55,7 +55,7 @@ public class finalMain {
             }
 
             else if (choice.equals("4")) {
-                System.out.println("Enter the date that you would like to search(MM-DD-YYYY with no spaces or dashes ex. 12102018)");
+                System.out.println("Enter the date that you would like to search(MM/DD/YYYY without '/' or spaces included ex. 12102018)");
                 String date = userInput.nextLine();
                 System.out.println("Date, Open, High, Low, Close, Volume");
                 x.dayFinder(date);
@@ -64,21 +64,21 @@ public class finalMain {
 
             else if (choice.equals("5")) {
                 System.out.println("Enter the amount of days you would like to base your calculation off of:");
-                int days = new Integer(userInput.nextLine());
+                int days = Integer.parseInt(userInput.nextLine());
                 System.out.println("Now enter how you would like to calculate the SMA");
                 System.out.println("1 = Open");
                 System.out.println("2 = High");
                 System.out.println("3 = Low");
                 System.out.println("4 = Close");
-                int type = new Integer(userInput.nextLine());
+                int type = Integer.parseInt(userInput.nextLine());
                 System.out.println(x.simpleMovingAverage(days, type));
             }
 
             else if (choice.equals("6")) {
                 System.out.println("Enter the date you would have liked to buy the stock(MM-DD-YYYY with no spaces or dashes ex. 12102018):");
-                float buyDate = new Float(userInput.nextLine());
+                float buyDate = Float.parseFloat(userInput.nextLine());
                 System.out.println("Now enter the date you would have liked to sell it(MM-DD-YYYY with no spaces or dashes ex. 12102018):");
-                float sellDate = new Float(userInput.nextLine());
+                float sellDate = Float.parseFloat(userInput.nextLine());
                 x.makeHistoricalTrade(buyDate, sellDate);
             }
 
@@ -96,5 +96,6 @@ public class finalMain {
             System.out.println("Would you like to do anything else?(y/n)");
             doMore = userInput.nextLine();
         }
+        userInput.close();
     }
 }
